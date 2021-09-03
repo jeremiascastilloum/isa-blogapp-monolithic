@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BlogApp<blog>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "ar.edu.um.isa.blog.BlogApp",
+            "projectName": "blog",
+            "args": ""
+        }
+    ]
+}

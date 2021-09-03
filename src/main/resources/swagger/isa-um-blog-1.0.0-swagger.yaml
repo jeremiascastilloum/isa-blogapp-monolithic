@@ -1,0 +1,74 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/isa-um/blog/1.0.0
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: blog API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: admins
+    description: Secured Admin-only calls
+  - name: developers
+    description: Operations available to regular developers
+paths:
+  /trend:
+    get:
+      tags:
+        - developers
+      summary: searches trends
+      operationId: searchInventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available trends in the system
+      parameters:
+        - in: query
+          name: range
+          description: number of days to calculate trend
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        '200':
+          description: search trends matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trend'
+        '400':
+          description: bad input parameter
+components:
+  schemas:
+    Trend:
+      type: object
+      required:
+        - position
+        - tag
+      properties:
+        position:
+          type: integer
+          format: int32
+          example: 1
+        tag:
+          $ref: '#/components/schemas/Tag'
+    Tag:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          example: Main Trend
+      type: object
