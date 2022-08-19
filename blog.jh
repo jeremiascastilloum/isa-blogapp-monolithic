@@ -6,7 +6,12 @@ application {
     buildTool maven,
     devDatabaseType mariadb,
     prodDatabaseType mariadb,
-    testFrameworks [cypress]
+    authenticationType jwt,
+    testFrameworks [cypress],
+    clientTheme sketchy,
+    languages [es,en],
+    nativeLanguage es,
+    enableSwaggerCodegen true
   }
   entities *
 }
